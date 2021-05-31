@@ -1,0 +1,15 @@
+Creation de page controller
+php artisan make:controller __nom du controller__
+
+Creation d'un model
+php artisan make:model __nom du modèl__ -m
+php artisan migrate
+
+Ligne de commande php
+php artisan tinker
+
+
+composer require laravelcollective/html
+
+Utilsation de resourece avec la création de controller
+php artisan make:controller ProductController --resource
