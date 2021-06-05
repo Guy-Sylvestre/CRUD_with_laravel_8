@@ -10,11 +10,10 @@
     <h1>Welcome to the services Home</h1>
 
     @foreach ($products as $product)
-        <div class="well">
-            <h3><a href="/show/{{$product->id}}">{{$product->product_name}}</a></h3>
-            <h4>{{$product->product_price}} $</h4>
-            <hr>
-            <small>Crée à {{$product->created_at}}</small>
+        <div class="well card my-3">
+            <h3 class="card-header"><a href="/show/{{$product->id}}">{{$product->product_name}}</a></h3>
+            <h4 class="card-body">{{$product->product_price}} $</h4>
+            <small class="card-footer">Crée à {{$product->created_at}}</small>
         </div>
     @endforeach
 

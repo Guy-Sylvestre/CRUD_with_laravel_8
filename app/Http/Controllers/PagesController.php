@@ -123,10 +123,37 @@ public function delete(Request $request){
     d'un argument '$request'
     */
     public function saveproduct(Request $request){
-        $product =new Product();
+
+        $this->validate($request, ['product_name' => 'required',
+                                    'product_price' => 'required',
+                                    'description' => 'required',
+                                    'product_image' => 'image|nullable|max:1999']);
+        
+        #Obtenir le nom original de l'image 
+        $fileNameWithExt = $request->file('product_image')->getClientOriginalName();
+
+        #Obtenir le nom original de l'image sans l'extension
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+        #Obtenir le nom original de l'image avec l'extension
+        $ext = $request->file('product_image')->getClientOriginalExtension();
+
+        #La fonction time attribut une value unique a chaque image
+        $fileNameToStore = $fileName.'_'.time().'.'.$ext;
+
+        print($fileNameWithExt);
+        echo'<pre></pre>';
+        print($fileName);
+        echo'<pre></pre>';
+        print($ext);
+        echo'<pre></pre>';
+        print('Le nom du ficheirs a sauvegardé est '.$fileNameToStore);
+
+        /*$product =new Product();
         $product->product_name = $request->product_name;
         $product->product_price = $request->product_price;
         $product->description = $request->description;
+        #$product->product_image = $request->product_image;
 
         #Sauvegarder
         $product->save();
@@ -135,7 +162,7 @@ public function delete(Request $request){
         Session::put('message', 'Le produit '.$request->product_name.' '.' a été inseré avec succes');
 
         #Redirection
-        return redirect('/create');
+        return redirect('/create');*/
     }
 
     

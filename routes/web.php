@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +36,6 @@ Route::post('/editproduct', [PagesController::class, 'editproduct']);
 
 #Supprimer un produit depuis le font end en rapport avec la base de données
 Route::get('/delete/{id}', [PagesController::class, 'delete']);
+
+
+Route::resource('/products', ProductController::class);
